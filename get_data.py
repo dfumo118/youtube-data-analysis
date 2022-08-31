@@ -4,6 +4,7 @@ from dotenv import dotenv_values
 import emoji
 
 def get_videos_info(youtube, videoIds):
+    result = []
     for i in range(4):
         query = ""
         for j in range(i*50, (i+1)*50):
@@ -13,7 +14,7 @@ def get_videos_info(youtube, videoIds):
 
         response = youtube.videos().list(part='statistics, snippet', id=query[:-1]).execute()
 
-        result = []
+        
         for item in response['items']:
             result.append({
                 'channelId': item['snippet']['channelId'],
@@ -127,4 +128,4 @@ def get_channel_data():
     df.to_csv("data/channel_info.csv")
 
 if __name__ == "__main__":
-    get_channel_data()
+    get_video_data()
