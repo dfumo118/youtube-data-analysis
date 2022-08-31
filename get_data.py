@@ -127,7 +127,7 @@ def get_channel_data():
         df = pd.concat([df,get_channel_info(youtube, id)], ignore_index=True)
     clean_channel_info(df)
     
-    df.to_csv("channel_info.csv")
+    df.to_csv("data/channel_info.csv")
 
 if __name__ == "__main__":
     get_channel_data()
