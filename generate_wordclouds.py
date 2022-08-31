@@ -13,7 +13,9 @@ def cloud_by_channel(channelId):
 
     df = pd.read_csv("data/video_info.csv")
     df = df.loc[df['channelId'] == channelId]
-    generate_cloud(df['title'].to_list(), stopwords)
+
+    label = channels.iloc[0]['name']
+    generate_cloud(df['title'].to_list(), stopwords, label)
 
 def overall_cloud():
     channels = pd.read_csv("data/channel_info.csv")
@@ -23,13 +25,14 @@ def overall_cloud():
     stopwords.update(names)
 
     df = pd.read_csv("data/video_info.csv")
-    generate_cloud(df['title'].to_list(), stopwords)
+    generate_cloud(df['title'].to_list(), stopwords, "Overall")
 
-def generate_cloud(titles, stopwords):
+def generate_cloud(titles, stopwords, label):
     words = ' '.join(titles)
 
     wordcloud = WordCloud(stopwords= stopwords, background_color= "white").generate(words)
     plt.imshow(wordcloud, interpolation='bilinear')
+    plt.title(label, fontdict={'fontsize': 30}, pad= 20)
     plt.axis("off")
     plt.show()
 
