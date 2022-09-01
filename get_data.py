@@ -54,7 +54,7 @@ def get_channel_videos(youtube, channelId):
 def remove_emoji(string):
     new = emoji.replace_emoji(string, replace="")
     if len(new) == 0:
-        return 'nan'
+        return ' '
     return new
 
 
