@@ -52,7 +52,11 @@ def get_channel_videos(youtube, channelId):
     return videos
 
 def remove_emoji(string):
-    return emoji.replace_emoji(string, replace="")
+    new = emoji.replace_emoji(string, replace="")
+    if len(new) == 0:
+        return 'nan'
+    return new
+
 
 def clean_video_info(df):
     df['title'] = df['title'].apply(remove_emoji)
