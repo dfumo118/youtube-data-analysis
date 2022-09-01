@@ -37,4 +37,4 @@ def generate_cloud(titles, stopwords, label):
     plt.show()
 
 if __name__ == "__main__":
-    cloud_by_channel("UCRijo3ddMTht_IHyNSNXpNQ")
+    overall_cloud()
