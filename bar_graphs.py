@@ -1,6 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
+import title_analysis
 
 def most_views_in_set():
     videos_df = pd.read_csv("data/video_info.csv", index_col= 0)
@@ -114,7 +114,49 @@ def likes_per_view_by_channel():
     plt.barh(labels, likes)
     plt.show()
 
+def most_used_words():
+    counts = title_analysis.count_instances(title_analysis.get_words())
+    counts = counts.sort_values('count', ascending= False)[:10]
+
+    labels = [word for word in counts['word']]
+    nums = [count for count in counts['count']]
+
+    fig = plt.figure(figsize= (12,7))
+    plt.bar(labels, nums)
+    plt.show()
+
+def most_viewed_words():
+    views = title_analysis.count_total_views(title_analysis.get_words())
+    views = views.sort_values('views', ascending= False)[:15]
+    views = views.sort_values('views')
+
+    labels = [word for word in views['word']]
+    nums = [count for count in views['views']]
+
+    fig = plt.figure(figsize= (12,7))
+    plt.barh(labels, nums)
+    plt.show()
+
+def divide_by_video_count(row, counts, n):
+    row['views'] = float(row['views']) / float(counts.loc[counts['word'] == row['word'], 'count'].values[0])
+    return row
+
+def most_viewed_words_per_video():
+    views = title_analysis.count_total_views(title_analysis.get_words())
+    counts = title_analysis.count_instances(title_analysis.get_words())
+    views = views.apply(divide_by_video_count, axis= 1, args = (counts, 0))
+    views = views.sort_values('views', ascending= False)[:15]
+    views = views.sort_values('views')
+
+    labels = [word for word in views['word']]
+    nums = [count for count in views['views']]
+
+    fig = plt.figure(figsize= (12,7))
+    plt.barh(labels, nums)
+    plt.show()
+
+
 
 if __name__ == "__main__":
-    most_liked_videos()
+    most_viewed_words_per_video()
 
