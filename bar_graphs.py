@@ -15,6 +15,9 @@ def most_views_in_set():
     
     fig = plt.figure(figsize =(12, 7))
     plt.barh(labels, views)
+    plt.ylabel('Channel')
+    plt.xlabel('Views (in set)')
+    plt.title('Most Views (in set) by Channel')
     plt.show()
 
 def divide_by_views_in_set(totals_row, channels_df, n):
@@ -39,6 +42,9 @@ def most_views_per_video_in_set():
     
     fig = plt.figure(figsize =(12, 7))
     plt.barh(labels, views)
+    plt.ylabel('Channel')
+    plt.xlabel('Views per video (in set)')
+    plt.title('Most Views per Video (in set) by Channel')
     plt.show()
 
 def most_total_views():
@@ -50,6 +56,9 @@ def most_total_views():
     
     fig = plt.figure(figsize =(12, 7))
     plt.barh(labels, views)
+    plt.ylabel('Channel')
+    plt.xlabel('Views')
+    plt.title('Most Total Views by Channel')
     plt.show()
 
 def divide_by_views(row):
@@ -66,6 +75,9 @@ def most_total_views_per_video():
     
     fig = plt.figure(figsize =(12, 7))
     plt.barh(labels, views)
+    plt.ylabel('Channel')
+    plt.xlabel('Views per video')
+    plt.title('Most Total Views per Video by Channel')
     plt.show()
 
 def most_viewed_videos():
@@ -77,8 +89,11 @@ def most_viewed_videos():
     views = [count for count in videos_df['views']]
 
     fig = plt.figure(figsize= (15,7))
-    plt.rcParams.update({'font.size': 6})
+    fig.subplots_adjust(left=0.3)
     plt.barh(labels, views)
+    plt.ylabel('Video title')
+    plt.xlabel('Views')
+    plt.title('Most Viewed Videos')
     plt.show()
 
 def most_liked_videos():
@@ -92,6 +107,9 @@ def most_liked_videos():
     fig = plt.figure(figsize= (15,7))
     fig.subplots_adjust(left=0.3)
     plt.barh(labels, likes)
+    plt.ylabel('Video title')
+    plt.xlabel('Likes')
+    plt.title('Most Liked Videos')
     plt.show()
 
 def divide_by_views_likes(row):
@@ -112,6 +130,9 @@ def likes_per_view_by_channel():
     
     fig = plt.figure(figsize =(12, 7))
     plt.barh(labels, likes)
+    plt.ylabel('Channel')
+    plt.xlabel('Likes per view')
+    plt.title('Most Likes per View by Channel')
     plt.show()
 
 def most_used_words():
@@ -123,6 +144,9 @@ def most_used_words():
 
     fig = plt.figure(figsize= (12,7))
     plt.bar(labels, nums)
+    plt.xlabel('Word in title')
+    plt.ylabel('# of videos`')
+    plt.title('Most Used Words in Titles')
     plt.show()
 
 def most_viewed_words():
@@ -135,6 +159,9 @@ def most_viewed_words():
 
     fig = plt.figure(figsize= (12,7))
     plt.barh(labels, nums)
+    plt.ylabel('Word in title')
+    plt.xlabel('Views')
+    plt.title('Most Viewed Words in Titles')
     plt.show()
 
 def divide_by_video_count(row, counts, n):
@@ -153,10 +180,13 @@ def most_viewed_words_per_video():
 
     fig = plt.figure(figsize= (12,7))
     plt.barh(labels, nums)
+    plt.ylabel('Word in title')
+    plt.xlabel('Views per video')
+    plt.title('Most Viewed Words in Titles per Video')
     plt.show()
 
 
 
 if __name__ == "__main__":
-    most_viewed_words_per_video()
+    most_used_words()
 
