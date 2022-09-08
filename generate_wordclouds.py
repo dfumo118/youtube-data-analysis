@@ -32,11 +32,10 @@ def generate_cloud(titles, stopwords, label, filename):
     words = ' '.join(titles)
 
     wordcloud = WordCloud(stopwords= stopwords, background_color= "white").generate(words)
-    wordcloud.to_file("img/" + filename + ".png")
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.title(label, fontdict={'fontsize': 30}, pad= 20)
     plt.axis("off")
-    plt.show()
+    plt.savefig(f"img/wordclouds/{filename}.png")
 
 if __name__ == "__main__":
     channelIds = [
@@ -51,5 +50,6 @@ if __name__ == "__main__":
         "UCwD4x63A9KC7Si2RuSfg-SA", # Dobre Twins
         "UClQubH2NeMmGLTLgNdLBwXg" # ZHC
     ]
+    overall_cloud()
     for id in channelIds:
         cloud_by_channel(id)
