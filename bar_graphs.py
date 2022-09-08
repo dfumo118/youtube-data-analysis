@@ -14,6 +14,7 @@ def most_views_in_set():
     views = [totals_df.loc[totals_df['channelId'] == id, 'views'].values[0] for id in ids]
     
     fig = plt.figure(figsize =(12, 7))
+    fig.subplots_adjust(left=0.2)
     plt.barh(labels, views)
     plt.ylabel('Channel')
     plt.xlabel('Views (in set)')
@@ -41,6 +42,7 @@ def most_views_per_video_in_set():
     views = [totals_df.loc[totals_df['channelId'] == id, 'views'].values[0] for id in ids]
     
     fig = plt.figure(figsize =(12, 7))
+    fig.subplots_adjust(left=0.2)
     plt.barh(labels, views)
     plt.ylabel('Channel')
     plt.xlabel('Views per video (in set)')
@@ -55,6 +57,7 @@ def most_total_views():
     views = [count for count in channels_df['totalViews']]
     
     fig = plt.figure(figsize =(12, 7))
+    fig.subplots_adjust(left=0.2)
     plt.barh(labels, views)
     plt.ylabel('Channel')
     plt.xlabel('Views')
@@ -74,6 +77,7 @@ def most_total_views_per_video():
     views = [count for count in channels_df['totalViews']]
     
     fig = plt.figure(figsize =(12, 7))
+    fig.subplots_adjust(left=0.2)
     plt.barh(labels, views)
     plt.ylabel('Channel')
     plt.xlabel('Views per video')
@@ -129,6 +133,7 @@ def likes_per_view_by_channel():
     likes = [totals_df.loc[totals_df['channelId'] == id, 'likes'].values[0] for id in ids]
     
     fig = plt.figure(figsize =(12, 7))
+    fig.subplots_adjust(left=0.2)
     plt.barh(labels, likes)
     plt.ylabel('Channel')
     plt.xlabel('Likes per view')
@@ -188,5 +193,14 @@ def most_viewed_words_per_video():
 
 
 if __name__ == "__main__":
+    most_views_in_set()
+    most_views_per_video_in_set()
+    most_total_views()
+    most_total_views_per_video()
+    most_viewed_videos()
+    most_liked_videos()
+    likes_per_view_by_channel()
     most_used_words()
+    most_viewed_words()
+    most_viewed_words_per_video()
 

@@ -50,5 +50,6 @@ if __name__ == "__main__":
         "UCwD4x63A9KC7Si2RuSfg-SA", # Dobre Twins
         "UClQubH2NeMmGLTLgNdLBwXg" # ZHC
     ]
+    overall_cloud()
     for id in channelIds:
         cloud_by_channel(id)
